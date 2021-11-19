@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include<Windows.h>
+#include<conio.h>
+
+void init();
+void title_screen();
+void menuDrew();
+void gotoxy(int x, int y);
+
+int main() {
+	init();
+	title_screen();
+	menuDrew();
+	return 0;
+}
+
+void init() {
+	system("mode con:cols=70 lines=30");
+}
+
+void title_screen() {
+	printf("\n\n\n\n");
+	gotoxy(10, 4);
+	printf("    ###       #########   #    #####	     ########\n");
+	gotoxy(10, 5);
+	printf("   #   #          #       #    #          #       #\n");
+	gotoxy(10, 6);
+	printf("   #   #         # # ######    #         #       #\n");
+	gotoxy(10, 7);
+	printf("    ###         #   #     #    #####      # 	  #\n");
+	gotoxy(10, 8);
+	printf("    # #          ###      #      #             #\n");
+	gotoxy(10, 9);
+	printf("    # #         #   #            #            ###\n");
+	gotoxy(10, 10);
+	printf("   #####         ###           #####          ###\n");
+	gotoxy(10, 11);
+}
+
+void gotoxy(int x, int y) {
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD pos;
+	pos.X = x;
+	pos.Y = y;
+	SetConsoleCursorPosition(consoleHandle, pos);
+}
+
+void menuDrew() {
+	gotoxy(25-2, 12);
+	printf("> 프로그램 실행");
+	gotoxy(25, 13);
+	printf("프로그램 정보");
+	gotoxy(25, 14);
+	printf("프로그램 종료");
+}
